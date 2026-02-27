@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Move Car Forward</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #road {
+            position: relative;
+            width: 800px;
+            height: 200px;
+            border: 3px solid black;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #car {
+            position: absolute;
+            left: 0px;
+            top: 70px;
+            width: 150px;
+            transition: left 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Car Moving Program</h2>
+
+    <button onclick="moveCar()">Move Forward</button>
+
+    <div id="road">
+        <!-- Local Image Used -->
+        <img id="car" src="Car.jpg" alt="Car Image">
+    </div>
+
+<script>
+
+    let position = 0;
+
+    function moveCar() {
+
+        let car = document.getElementById("car");
+        let roadWidth = document.getElementById("road").offsetWidth;
+        let carWidth = car.offsetWidth;
+
+        if (position + carWidth < roadWidth) {
+            position += 50;
+            car.style.left = position + "px";
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

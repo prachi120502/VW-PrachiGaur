@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Message</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+        }
+
+        #message {
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .birthday-style {
+            font-size: 40px !important;
+            color: white !important;
+            background: linear-gradient(45deg, red, orange, purple, blue);
+            padding: 20px;
+            border-radius: 15px;
+            animation: glow 1s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px gold; }
+            to { box-shadow: 0 0 25px red; }
+        }
+
+        img {
+            width: 200px;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>There is a message for you!!</h4>
+    <p id="message">wait..</p>
+    <button onclick="changeMessage()">Click here to get it!</button>
+
+    <br>
+    <img id="bdayGif" src="https://media.giphy.com/media/g5R9dok94mrIvplmZd/giphy.gif">
+
+<script>
+    let count = 0;
+    let fontSize = 16;
+
+    function changeMessage() {
+        count++;
+        let msg = document.getElementById("message");
+
+        if (count < 4) {
+            fontSize += 20;
+            msg.style.fontSize = fontSize + "px";
+            msg.style.color = "#" + Math.floor(Math.random()*16777215).toString(16);
+            msg.innerHTML = "wait..";
+        } 
+        else {
+            msg.innerHTML = "🎉 Happy Birthday 🎂";
+            msg.classList.add("birthday-style");
+            document.getElementById("bdayGif").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
