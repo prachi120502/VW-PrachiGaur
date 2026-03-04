@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Company Login</title>
+</head>
+
+<body>
+
+<h2>Company Portal Login</h2>
+
+<p style="color:red;">{{error}}</p>
+
+<form action="/login" method="POST">
+
+Username<br>
+<input type="text" name="username" required>
+
+<br><br>
+
+Password<br>
+<input type="password" name="password" required>
+
+<br><br>
+
+Role<br>
+<select name="role">
+<option value="admin">Admin</option>
+<option value="employee">Employee</option>
+<option value="hr">HR</option>
+</select>
+
+<br><br>
+
+<label>
+<input type="checkbox" name="remember_me">
+Remember Me
+</label>
+
+<br><br>
+
+<button type="submit">Login</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+body {
+    font-family: Arial;
+    margin: 40px;
+    background-color: #f4f6f9;
+}
+
+h1 {
+    color: #333;
+}
+
+.stats {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.comment-box {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.flagged {
+    border-left: 6px solid red;
+    background-color: #ffe5e5;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+}
+
+.trending {
+    background-color: green;
+}
+
+.long {
+    background-color: orange;
+}

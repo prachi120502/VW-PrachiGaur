@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask Cookie Example</title>
+</head>
+<body>
+
+<h2>Enter Your Name</h2>
+
+<form method="POST">
+    <input type="text" name="username" placeholder="Enter your name" required>
+    <button type="submit">Submit</button>
+</form>
+
+{% if username %}
+<h3>Hello {{username}}</h3>
+<h3>You visited this page {{visit_count}} times</h3>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Products</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>Products</h1>
+
+<div class="container">
+
+{% for name, price in products.items() %}
+
+<div class="card">
+
+<h3>{{name}}</h3>
+
+<p>Price: ₹{{price}}</p>
+
+<a class="btn" href="/products/add/{{name}}">Add to Cart</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<br>
+
+<a class="btn" href="/cart/">View Cart</a>
+
+</body>
+</html>

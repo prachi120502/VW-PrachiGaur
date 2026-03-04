@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>Your Cart</h1>
+
+{% if cart %}
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Subtotal</th>
+</tr>
+
+{% for item,data in cart.items() %}
+
+<tr>
+
+<td>{{item}}</td>
+
+<td>{{data.price}}</td>
+
+<td>
+
+<form action="/cart/update" method="POST">
+
+<input type="hidden" name="product" value="{{item}}">
+
+<select name="quantity" onchange="this.form.submit()">
+
+{% for i in range(0,11) %}
+
+<option value="{{i}}" {% if i == data.qty %}selected{% endif %}>
+{{i}}
+</option>
+
+{% endfor %}
+
+</select>
+
+</form>
+
+</td>
+
+<td>{{data.subtotal}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h3>Total: ₹{{total}}</h3>
+
+<br>
+
+<a class="btn" href="/cart/clear">Clear Cart</a>
+
+{% else %}
+
+<h2>Your Cart is Empty</h2>
+
+{% endif %}
+
+<br>
+
+<a href="/products/">Back to Products</a>
+
+</body>
+</html>

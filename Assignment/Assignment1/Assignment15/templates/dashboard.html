@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ role|capitalize }} Dashboard</title>
+</head>
+<body>
+
+<h1>{{ role|capitalize }} Dashboard</h1>
+
+<!-- Role Dropdown -->
+<form method="GET" action="/dashboard">
+    <select name="role" onchange="this.form.submit()">
+        <option value="employee" {% if role == "employee" %}selected{% endif %}>Employee</option>
+        <option value="manager" {% if role == "manager" %}selected{% endif %}>Manager</option>
+        <option value="admin" {% if role == "admin" %}selected{% endif %}>Admin</option>
+    </select>
+</form>
+
+<br>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Name</th>
+        <th>Department</th>
+
+        {% if role in ["manager", "admin"] %}
+            <th>Salary</th>
+        {% endif %}
+
+        {% if role == "admin" %}
+            <th>Actions</th>
+        {% endif %}
+    </tr>
+
+    {% for emp in employees %}
+    <tr>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.dept }}</td>
+
+        {% if role in ["manager", "admin"] %}
+            <td>{{ emp.salary }}</td>
+        {% endif %}
+
+        {% if role == "admin" %}
+            <td>
+                <a href="/dashboard?role=admin&delete={{ emp.name }}">
+                    <button>Delete</button>
+                </a>
+            </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

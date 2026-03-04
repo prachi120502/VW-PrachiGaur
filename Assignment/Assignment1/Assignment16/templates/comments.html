@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comments Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>User Comments</h1>
+
+<!-- 3️⃣ Statistics Section -->
+<div class="stats">
+    <h3>Statistics</h3>
+    <p>Total Comments: {{ total_comments }}</p>
+    <p>Total Flagged Comments: {{ total_flagged }}</p>
+    <p>Most Liked Comment By: {{ most_liked.username }} ({{ most_liked.likes }} likes)</p>
+    <p>All Usernames: {{ all_usernames }}</p>
+</div>
+
+<hr>
+
+<!-- Comments List -->
+{% for comment in comments %}
+<div class="comment-box {% if comment.flagged %}flagged{% endif %}">
+
+    <h3>{{ comment.username }}</h3>
+
+    <p>{{ comment.comment }}</p>
+
+    <p><strong>Likes:</strong> {{ comment.likes }}</p>
+
+    <!-- 2️⃣ Conditional Labels -->
+    {% if comment.likes > 100 %}
+        <span class="badge trending">Trending</span>
+    {% endif %}
+
+    {% if comment.comment|length > 200 %}
+        <span class="badge long">Long Post</span>
+    {% endif %}
+
+</div>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Listing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Product Listing Page</h1>
+
+<p><b>Use URL query parameters to filter:</b></p>
+<p>
+Example:
+<br>
+/products?category=Electronics
+<br>
+/products?available=true
+<br>
+/products?sort=low
+<br>
+/products?category=Clothing&available=true&sort=high
+</p>
+
+<h3>Total Products Displayed: {{ total_count }}</h3>
+
+{% if products %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Availability</th>
+    </tr>
+
+    {% for product in products %}
+    <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>₹{{ product.price }}</td>
+        <td>
+            {% if product.available %}
+                <span class="available">Available</span>
+            {% else %}
+                <span class="unavailable">Not Available</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+    <h2 class="empty">No products found.</h2>
+{% endif %}
+
+</body>
+</html>
