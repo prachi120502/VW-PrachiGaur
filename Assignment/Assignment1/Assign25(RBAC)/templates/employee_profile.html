@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Profile</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Employee Profile</h2>
+
+<p><b>Name:</b> {{ employee.name }}</p>
+
+<p><b>Email:</b> {{ employee.email }}</p>
+
+<p><b>Department:</b> {{ employee.department }}</p>
+
+<br>
+
+<a href="/employee/{{employee.id}}/edit">Edit Profile</a>
+
+<br><br>
+
+<a href="/employees">Back to Employees</a>
+
+</div>
+
+</body>
+</html>

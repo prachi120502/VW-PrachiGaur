@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employees</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Employees</h2>
+
+{% if session['role']=="Admin" %}
+<a href="/employee/create">
+<button>Create Employee</button>
+</a>
+{% endif %}
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Actions</th>
+</tr>
+
+{% for emp in employees %}
+
+<tr>
+
+<td>{{emp.id}}</td>
+<td>{{emp.name}}</td>
+<td>{{emp.email}}</td>
+<td>{{emp.department}}</td>
+
+<td>
+
+<a href="/employee/{{emp.id}}">View</a>
+
+{% if session['role']=="Admin" %}
+<a href="/employee/{{emp.id}}/edit">Edit</a>
+<a href="/employee/{{emp.id}}/delete">Delete</a>
+{% endif %}
+
+{% if session['role']=="Manager" and emp.manager_id==session['user_id'] %}
+<a href="/employee/{{emp.id}}/edit">Edit</a>
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>
